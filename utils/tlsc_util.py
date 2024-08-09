@@ -106,6 +106,11 @@ class TlscUtil:
             else:
                 self.request_session.cookies.set(name=c.get("name"), value=c.get("value"))
 
+    def update_cookies(self) -> None:
+        # @@..> update cookies
+        for c in self.request_cookie:
+            self.request_session.cookies.update({c.get("name"): c.get("value")})
+            
     def get_cookies(self) -> None:
         # @@..> get cookies
         self.response_cookie = []

@@ -10,6 +10,7 @@
 from datetime import datetime, timedelta
 from calendar import monthrange
 import time
+import pytz
 import random
 
 
@@ -92,6 +93,22 @@ class TimeUtil:
         try:
             return src_date + timedelta(days=days, hours=hours, minutes=mins, seconds=secs)
         except Exception:
+            return datetime.now()
+
+    @classmethod
+    def datetime_to_utcdate(cls, src_date: datetime = None) -> datetime:
+        """
+        _convert date to utcdate_
+
+        Args:
+            src_date (datetime, optional): _datetime_. Defaults to None.
+
+        Returns:
+            datetime: _utc datetime. Defaults to datetime_
+        """
+        if isinstance(src_date, datetime) is True:
+            return src_date.astimezone(pytz.utc)
+        else:
             return datetime.now()
 
     @classmethod

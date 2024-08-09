@@ -185,7 +185,7 @@ class StrsUtil:
 
         new_str = ""
         src_str = cls.one_space_separate(src_str)
-        if len(src_str) < src_len:
+        if len(src_str) <= src_len:
             new_str = src_str
         else:
             new_len = 0
@@ -197,7 +197,7 @@ class StrsUtil:
                 if new_len < src_len:
                     new_str += single_word
 
-        return new_str
+        return new_str.strip()
 
     @classmethod
     def millions_to_units(cls, src_int: int = 0) -> str:

@@ -215,7 +215,7 @@ class CrypUtil:
             if len(src_key) != 16:
                 src_key = "0011001100110011"
 
-            bytes_data = cls.base64_decode(src_data.encode("utf-8"))
+            bytes_data = cls.base64_decode(src_data)
             aes_ecb = cls.ecb_mode(src_key.encode("utf-8"))
             decrypt_data = aes_ecb.decrypt(bytes_data)
             unpadding_data = cls.unpad_data(decrypt_data)
